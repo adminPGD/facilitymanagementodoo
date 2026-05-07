@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  fm-odoo-db:
+    image: postgres:16
+    container_name: fm-odoo-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=rua
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo@rua2026
+    volumes:
+      - fm_pg_data:/var/lib/postgresql/data
+    networks:
+      - fm_net
+
+  fm-odoo-app:
+    image: odoo:19
+    container_name: fm-odoo-app
+    restart: unless-stopped
+    depends_on:
+      - fm-odoo-db
+    ports:
+      - "8089:8069"
+      - "8092:8072"
+    volumes:
+      - fm_odoo_data:/var/lib/odoo
+      - ./rua_facility_base:/mnt/extra-addons/rua_facility_base
+      - ./rua_facility_campus:/mnt/extra-addons/rua_facility_campus
+      - ./rua_facility_operations:/mnt/extra-addons/rua_facility_operations
+      - ./rua_facility_portal_api:/mnt/extra-addons/rua_facility_portal_api
+      - ./odoo.conf:/etc/odoo/odoo.conf
+    networks:
+      - fm_net
+
+volumes:
+  fm_pg_data:
+  fm_odoo_data:
+
+networks:
+  fm_net:
+    driver: bridge
