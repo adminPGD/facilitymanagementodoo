@@ -22,6 +22,7 @@ services:
     ports:
       - "8089:8069"
       - "8092:8072"
+    entrypoint: ["/bin/bash", "-c", "pip3 install PyJWT --break-system-packages -q && exec /entrypoint.sh odoo"]
     volumes:
       - fm_odoo_data:/var/lib/odoo
       - ./rua_facility_base:/mnt/extra-addons/rua_facility_base
