@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Default SLA Rules (10 total) -->
+
+    <!-- 1. Critical Safety Report -->
+    <record id="sla_safety" model="facility.sla">
+        <field name="name">Critical Safety Report</field>
+        <field name="request_type">safety_report</field>
+        <field name="risk_level">critical</field>
+        <field name="response_time_hours">0.5</field>
+        <field name="resolution_time_hours">2</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <!-- 2. Urgent Electrical Issue -->
+    <record id="sla_urgent" model="facility.sla">
+        <field name="name">Urgent Electrical Issue</field>
+        <field name="priority">urgent</field>
+        <field name="response_time_hours">1</field>
+        <field name="resolution_time_hours">4</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <!-- 3. High Priority HVAC Issue -->
+    <record id="sla_high" model="facility.sla">
+        <field name="name">High Priority HVAC Issue</field>
+        <field name="priority">high</field>
+        <field name="response_time_hours">2</field>
+        <field name="resolution_time_hours">8</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <!-- 4. Event Audio and Lighting Issue -->
+    <record id="sla_event_audio" model="facility.sla">
+        <field name="name">Event Audio and Lighting Issue</field>
+        <field name="request_type">event_preparation</field>
+        <field name="priority">high</field>
+        <field name="response_time_hours">1</field>
+        <field name="resolution_time_hours">6</field>
+        <field name="sequence">3</field>
+    </record>
+
+    <!-- 5. Normal Cleaning Request -->
+    <record id="sla_cleaning" model="facility.sla">
+        <field name="name">Normal Cleaning Request</field>
+        <field name="request_type">cleaning_request</field>
+        <field name="response_time_hours">4</field>
+        <field name="resolution_time_hours">12</field>
+        <field name="sequence">15</field>
+    </record>
+
+    <!-- 6. Improvement Observation -->
+    <record id="sla_observation" model="facility.sla">
+        <field name="name">Improvement Observation</field>
+        <field name="request_type">observation</field>
+        <field name="response_time_hours">24</field>
+        <field name="resolution_time_hours">168</field>
+        <field name="sequence">30</field>
+    </record>
+
+    <!-- 7. Event Preparation Request -->
+    <record id="sla_event_prep" model="facility.sla">
+        <field name="name">Event Preparation Request</field>
+        <field name="request_type">event_preparation</field>
+        <field name="response_time_hours">4</field>
+        <field name="resolution_time_hours">48</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <!-- 8. Maintenance Report SLA -->
+    <record id="sla_maintenance" model="facility.sla">
+        <field name="name">Maintenance Report SLA</field>
+        <field name="request_type">maintenance_report</field>
+        <field name="response_time_hours">4</field>
+        <field name="resolution_time_hours">24</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <!-- 9. Service Request SLA -->
+    <record id="sla_service" model="facility.sla">
+        <field name="name">Service Request SLA</field>
+        <field name="request_type">service_request</field>
+        <field name="response_time_hours">8</field>
+        <field name="resolution_time_hours">48</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <!-- 10. Default SLA (catch-all) -->
+    <record id="sla_default" model="facility.sla">
+        <field name="name">Default SLA</field>
+        <field name="response_time_hours">8</field>
+        <field name="resolution_time_hours">48</field>
+        <field name="sequence">100</field>
+    </record>
+</odoo>

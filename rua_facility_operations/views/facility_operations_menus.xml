@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- === Requests Submenu === -->
+    <menuitem id="menu_facility_requests_root" name="Requests &amp; Reports" parent="rua_facility_base.menu_facility_root" sequence="20"/>
+
+    <record id="facility_request_action_all" model="ir.actions.act_window">
+        <field name="name">All Requests</field><field name="res_model">facility.request</field><field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="facility_request_view_search"/>
+    </record>
+    <record id="facility_request_action_maintenance" model="ir.actions.act_window">
+        <field name="name">Maintenance Reports</field><field name="res_model">facility.request</field><field name="view_mode">list,form</field>
+        <field name="domain">[('request_type', '=', 'maintenance_report')]</field>
+        <field name="context">{'default_request_type': 'maintenance_report'}</field>
+    </record>
+    <record id="facility_request_action_observation" model="ir.actions.act_window">
+        <field name="name">Observations</field><field name="res_model">facility.request</field><field name="view_mode">list,form</field>
+        <field name="domain">[('request_type', '=', 'observation')]</field>
+        <field name="context">{'default_request_type': 'observation'}</field>
+    </record>
+    <record id="facility_request_action_service" model="ir.actions.act_window">
+        <field name="name">Service Requests</field><field name="res_model">facility.request</field><field name="view_mode">list,form</field>
+        <field name="domain">[('request_type', '=', 'service_request')]</field>
+        <field name="context">{'default_request_type': 'service_request'}</field>
+    </record>
+    <record id="facility_request_action_event" model="ir.actions.act_window">
+        <field name="name">Event Preparation Requests</field><field name="res_model">facility.request</field><field name="view_mode">list,form</field>
+        <field name="domain">[('request_type', '=', 'event_preparation')]</field>
+        <field name="context">{'default_request_type': 'event_preparation'}</field>
+    </record>
+    <record id="facility_request_action_safety" model="ir.actions.act_window">
+        <field name="name">Safety Reports</field><field name="res_model">facility.request</field><field name="view_mode">list,form</field>
+        <field name="domain">[('request_type', '=', 'safety_report')]</field>
+        <field name="context">{'default_request_type': 'safety_report'}</field>
+    </record>
+
+    <menuitem id="menu_request_all" name="All Requests" parent="menu_facility_requests_root" action="facility_request_action_all" sequence="1"/>
+    <menuitem id="menu_request_maintenance" name="Maintenance Reports" parent="menu_facility_requests_root" action="facility_request_action_maintenance" sequence="2"/>
+    <menuitem id="menu_request_observation" name="Observations" parent="menu_facility_requests_root" action="facility_request_action_observation" sequence="3"/>
+    <menuitem id="menu_request_service" name="Service Requests" parent="menu_facility_requests_root" action="facility_request_action_service" sequence="4"/>
+    <menuitem id="menu_request_event" name="Event Preparation" parent="menu_facility_requests_root" action="facility_request_action_event" sequence="5"/>
+    <menuitem id="menu_request_safety" name="Safety Reports" parent="menu_facility_requests_root" action="facility_request_action_safety" sequence="6"/>
+
+    <!-- === Work Orders Submenu === -->
+    <menuitem id="menu_facility_wo_root" name="Work Orders" parent="rua_facility_base.menu_facility_root" sequence="30"/>
+
+    <record id="facility_wo_action_all" model="ir.actions.act_window">
+        <field name="name">All Work Orders</field><field name="res_model">facility.work.order</field><field name="view_mode">list,form</field>
+    </record>
+    <record id="facility_wo_action_open" model="ir.actions.act_window">
+        <field name="name">Open Work Orders</field><field name="res_model">facility.work.order</field><field name="view_mode">list,form</field>
+        <field name="domain">[('state', 'not in', ['closed', 'cancelled'])]</field>
+    </record>
+
+    <menuitem id="menu_wo_all" name="All Work Orders" parent="menu_facility_wo_root" action="facility_wo_action_all" sequence="1"/>
+    <menuitem id="menu_wo_open" name="Open Work Orders" parent="menu_facility_wo_root" action="facility_wo_action_open" sequence="2"/>
+
+    <!-- === Ratings Submenu === -->
+    <menuitem id="menu_facility_ratings_root" name="Ratings" parent="rua_facility_base.menu_facility_root" sequence="80"/>
+
+    <record id="facility_rating_action" model="ir.actions.act_window">
+        <field name="name">Ratings</field><field name="res_model">facility.rating</field><field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_rating_all" name="All Ratings" parent="menu_facility_ratings_root" action="facility_rating_action" sequence="1"/>
+</odoo>

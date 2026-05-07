@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================================= -->
+    <!--          Sequences                -->
+    <!-- ================================= -->
+    <record id="seq_facility_request" model="ir.sequence">
+        <field name="name">Facility Request</field>
+        <field name="code">facility.request</field>
+        <field name="prefix">FAC-REQ-%(year)s-</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_facility_work_order" model="ir.sequence">
+        <field name="name">Facility Work Order</field>
+        <field name="code">facility.work.order</field>
+        <field name="prefix">FAC-WO-%(year)s-</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_facility_asset" model="ir.sequence">
+        <field name="name">Facility Asset</field>
+        <field name="code">facility.asset</field>
+        <field name="prefix">FAC-ASSET-</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_facility_event" model="ir.sequence">
+        <field name="name">Facility Event Request</field>
+        <field name="code">facility.event.request</field>
+        <field name="prefix">FAC-EVENT-%(year)s-</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+    </record>
+</odoo>

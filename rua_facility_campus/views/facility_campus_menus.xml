@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Campus Submenu (under root from rua_facility_base) -->
+    <menuitem id="menu_facility_campus_root"
+              name="Campus"
+              parent="rua_facility_base.menu_facility_root"
+              sequence="10"/>
+
+    <!-- Actions -->
+    <record id="facility_campus_action" model="ir.actions.act_window">
+        <field name="name">Campuses</field>
+        <field name="res_model">facility.campus</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="facility_building_action" model="ir.actions.act_window">
+        <field name="name">Buildings</field>
+        <field name="res_model">facility.building</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="facility_floor_action" model="ir.actions.act_window">
+        <field name="name">Floors</field>
+        <field name="res_model">facility.floor</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="facility_space_action" model="ir.actions.act_window">
+        <field name="name">Spaces</field>
+        <field name="res_model">facility.space</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="facility_space_view_search"/>
+    </record>
+    <record id="facility_asset_action" model="ir.actions.act_window">
+        <field name="name">Assets</field>
+        <field name="res_model">facility.asset</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_facility_campus" name="Campuses" parent="menu_facility_campus_root" action="facility_campus_action" sequence="1"/>
+    <menuitem id="menu_facility_building" name="Buildings" parent="menu_facility_campus_root" action="facility_building_action" sequence="2"/>
+    <menuitem id="menu_facility_floor" name="Floors" parent="menu_facility_campus_root" action="facility_floor_action" sequence="3"/>
+    <menuitem id="menu_facility_space" name="Spaces" parent="menu_facility_campus_root" action="facility_space_action" sequence="4"/>
+
+    <!-- Assets submenu -->
+    <menuitem id="menu_facility_assets_root"
+              name="Assets"
+              parent="rua_facility_base.menu_facility_root"
+              sequence="50"/>
+    <menuitem id="menu_facility_asset_all" name="All Assets" parent="menu_facility_assets_root" action="facility_asset_action" sequence="1"/>
+</odoo>

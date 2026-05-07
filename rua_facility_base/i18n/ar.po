@@ -1,0 +1,81 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* rua_facility_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-05 00:00+0000\n"
+"PO-Revision-Date: 2026-05-05 00:00+0000\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#. module: rua_facility_base
+#: model:ir.ui.menu,name:rua_facility_base.menu_facility_root
+msgid "Facility Management"
+msgstr "إدارة المرافق"
+
+#. module: rua_facility_base
+#: model:ir.ui.menu,name:rua_facility_base.menu_facility_configuration
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#. module: rua_facility_base
+#: model:ir.actions.act_window,name:rua_facility_base.facility_sla_action
+#: model:ir.ui.menu,name:rua_facility_base.menu_facility_sla
+msgid "Service Level Agreements"
+msgstr "اتفاقيات مستوى الخدمة"
+
+#. module: rua_facility_base
+#: model:ir.ui.menu,name:rua_facility_base.menu_facility_settings
+msgid "General Settings"
+msgstr "إعدادات عامة"
+
+#. module: rua_facility_base
+#: model:ir.actions.act_window,name:rua_facility_base.facility_settings_action
+msgid "Facility Management Settings"
+msgstr "إعدادات إدارة المرافق"
+
+#. module: rua_facility_base
+#: model_terms:ir.ui.view,arch_db:rua_facility_base.facility_settings_view_form
+msgid "General Settings"
+msgstr "إعدادات عامة"
+
+#. module: rua_facility_base
+#: model_terms:ir.ui.view,arch_db:rua_facility_base.facility_settings_view_form
+msgid "Default SLA"
+msgstr "اتفاقية مستوى الخدمة الافتراضية"
+
+#. module: rua_facility_base
+#: model_terms:ir.ui.view,arch_db:rua_facility_base.facility_settings_view_form
+msgid "Auto-assign Team"
+msgstr "تعيين الفريق تلقائياً"
+
+#. module: rua_facility_base
+#: model_terms:ir.ui.view,arch_db:rua_facility_base.facility_settings_view_form
+msgid "Request Policy"
+msgstr "سياسة الطلبات"
+
+#. module: rua_facility_base
+#: model_terms:ir.ui.view,arch_db:rua_facility_base.facility_settings_view_form
+msgid "Allow Reopening Requests"
+msgstr "السماح بإعادة فتح الطلبات"
+
+#. module: rua_facility_base
+#: model_terms:ir.ui.view,arch_db:rua_facility_base.facility_settings_view_form
+msgid "Rating Required After Closure"
+msgstr "التقييم مطلوب بعد الإغلاق"
+
+#. module: rua_facility_base
+#: model_terms:ir.ui.view,arch_db:rua_facility_base.facility_settings_view_form
+msgid "Attachments"
+msgstr "المرفقات"
+
+#. module: rua_facility_base
+#: model_terms:ir.ui.view,arch_db:rua_facility_base.facility_settings_view_form
+msgid "Maximum Attachment Size (MB)"
+msgstr "الحد الأقصى لحجم المرفق (MB)"

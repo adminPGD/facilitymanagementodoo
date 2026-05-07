@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Default space type data is defined via selection field -->
+    <!-- Asset categories for university context -->
+    <record id="asset_cat_hvac" model="facility.asset.category">
+        <field name="name">HVAC Systems</field><field name="icon">ac_unit</field>
+    </record>
+    <record id="asset_cat_electrical" model="facility.asset.category">
+        <field name="name">Electrical Systems</field><field name="icon">bolt</field>
+    </record>
+    <record id="asset_cat_plumbing" model="facility.asset.category">
+        <field name="name">Plumbing</field><field name="icon">water_drop</field>
+    </record>
+    <record id="asset_cat_elevator" model="facility.asset.category">
+        <field name="name">Elevators</field><field name="icon">elevator</field>
+    </record>
+    <record id="asset_cat_fire_safety" model="facility.asset.category">
+        <field name="name">Fire Safety Systems</field><field name="icon">fire_extinguisher</field>
+    </record>
+    <record id="asset_cat_audio" model="facility.asset.category">
+        <field name="name">Audio Systems</field><field name="icon">speaker</field>
+    </record>
+    <record id="asset_cat_lighting_stage" model="facility.asset.category">
+        <field name="name">Theater Lighting Systems</field><field name="icon">highlight</field>
+    </record>
+    <record id="asset_cat_projection" model="facility.asset.category">
+        <field name="name">Projection and Display</field><field name="icon">videocam</field>
+    </record>
+    <record id="asset_cat_computing" model="facility.asset.category">
+        <field name="name">Computing Equipment</field><field name="icon">computer</field>
+    </record>
+    <record id="asset_cat_art_equipment" model="facility.asset.category">
+        <field name="name">Arts Workshop Equipment</field><field name="icon">palette</field>
+    </record>
+    <record id="asset_cat_furniture" model="facility.asset.category">
+        <field name="name">Furniture</field><field name="icon">chair</field>
+    </record>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="facility_settings_action" model="ir.actions.act_window">
+        <field name="name">Facility Management Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">main</field>
+        <field name="context">{'module': 'rua_facility_base'}</field>
+    </record>
+
+    <record id="facility_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.facility</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Facility Management" string="Facility Management" name="rua_facility_base">
+                    <block title="General Settings">
+                        <setting string="Default SLA"
+                                 help="Applied when no other matching SLA exists">
+                            <field name="facility_default_sla_id"/>
+                        </setting>
+                        <setting string="Auto-assign Team"
+                                 help="Automatically assign team based on request type and location">
+                            <field name="facility_auto_assign_team"/>
+                        </setting>
+                    </block>
+                    <block title="Request Policy">
+                        <setting string="Allow Reopening Requests">
+                            <field name="facility_allow_reopen"/>
+                        </setting>
+                        <setting string="Rating Required After Closure">
+                            <field name="facility_rating_required"/>
+                        </setting>
+                    </block>
+                    <block title="Attachments">
+                        <setting string="Maximum Attachment Size (MB)">
+                            <field name="facility_max_attachment_size_mb"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

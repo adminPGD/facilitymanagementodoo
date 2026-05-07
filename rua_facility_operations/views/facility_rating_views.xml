@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="facility_rating_view_list" model="ir.ui.view">
+        <field name="name">facility.rating.list</field>
+        <field name="model">facility.rating</field>
+        <field name="arch" type="xml">
+            <list><field name="request_id"/><field name="rated_by"/><field name="response_speed"/><field name="execution_quality"/><field name="team_behavior"/><field name="average_score"/><field name="issue_solved"/><field name="reopen_requested"/><field name="rating_date"/></list>
+        </field>
+    </record>
+    <record id="facility_rating_view_form" model="ir.ui.view">
+        <field name="name">facility.rating.form</field>
+        <field name="model">facility.rating</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group><group><field name="request_id"/><field name="work_order_id"/><field name="rated_by"/><field name="rating_date"/></group>
+                    <group><field name="response_speed"/><field name="execution_quality"/><field name="team_behavior"/><field name="average_score"/></group></group>
+                    <group><field name="issue_solved"/><field name="reopen_requested"/></group>
+                    <field name="comment" placeholder="أضف تعليقك هنا..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

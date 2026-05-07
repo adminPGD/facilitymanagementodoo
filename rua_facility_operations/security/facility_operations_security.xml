@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Record rules for operations models -->
+
+    <!-- Portal users see only their own requests -->
+    <record id="rule_request_portal_own" model="ir.rule">
+        <field name="name">Request: portal users see own</field>
+        <field name="model_id" ref="model_facility_request"/>
+        <field name="domain_force">[('requester_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Technicians see only assigned work orders -->
+    <record id="rule_wo_technician_assigned" model="ir.rule">
+        <field name="name">Work Order: technicians see assigned</field>
+        <field name="model_id" ref="model_facility_work_order"/>
+        <field name="domain_force">[('assigned_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('rua_facility_base.group_facility_technician'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Contractors see only work orders assigned to their partner -->
+    <record id="rule_wo_contractor_partner" model="ir.rule">
+        <field name="name">Work Order: contractors see own company</field>
+        <field name="model_id" ref="model_facility_work_order"/>
+        <field name="domain_force">[('contractor_id', '=', user.partner_id.id)]</field>
+        <field name="groups" eval="[(4, ref('rua_facility_base.group_facility_contractor_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Managers see all -->
+    <record id="rule_request_manager_all" model="ir.rule">
+        <field name="name">Request: managers see all</field>
+        <field name="model_id" ref="model_facility_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('rua_facility_base.group_facility_manager'))]"/>
+    </record>
+
+    <record id="rule_wo_manager_all" model="ir.rule">
+        <field name="name">Work Order: managers see all</field>
+        <field name="model_id" ref="model_facility_work_order"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('rua_facility_base.group_facility_manager'))]"/>
+    </record>
+
+    <!-- Supervisors see all requests and work orders -->
+    <record id="rule_request_supervisor_all" model="ir.rule">
+        <field name="name">Request: supervisors see all</field>
+        <field name="model_id" ref="model_facility_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('rua_facility_base.group_facility_supervisor'))]"/>
+    </record>
+
+    <record id="rule_wo_supervisor_all" model="ir.rule">
+        <field name="name">Work Order: supervisors see all</field>
+        <field name="model_id" ref="model_facility_work_order"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('rua_facility_base.group_facility_supervisor'))]"/>
+    </record>
+</odoo>

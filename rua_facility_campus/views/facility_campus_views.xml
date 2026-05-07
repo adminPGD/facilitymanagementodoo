@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="facility_campus_view_list" model="ir.ui.view">
+        <field name="name">facility.campus.list</field>
+        <field name="model">facility.campus</field>
+        <field name="arch" type="xml">
+            <list><field name="sequence" widget="handle"/><field name="code"/><field name="name"/><field name="city"/><field name="manager_id"/><field name="building_count"/></list>
+        </field>
+    </record>
+    <record id="facility_campus_view_form" model="ir.ui.view">
+        <field name="name">facility.campus.form</field>
+        <field name="model">facility.campus</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title"><h1><field name="name"/></h1></div>
+                    <group><group><field name="code"/><field name="city"/><field name="manager_id"/></group><group><field name="building_count"/><field name="space_count"/><field name="company_id" groups="base.group_multi_company"/></group></group>
+                    <notebook><page string="Address"><field name="address"/></page><page string="Notes"><field name="notes"/></page></notebook>
+                </sheet><chatter/>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================================= -->
+    <!--        Root Application Menu      -->
+    <!-- ================================= -->
+    <menuitem id="menu_facility_root"
+              name="Facility Management"
+              web_icon="rua_facility_base,static/description/icon.png"
+              groups="group_facility_technician,group_facility_manager,group_facility_admin,group_facility_management_readonly,group_facility_contract_manager,group_facility_inventory_officer,group_facility_sustainability_officer,group_facility_safety_officer"
+              sequence="100"/>
+
+    <!-- ================================= -->
+    <!--        Settings Menu              -->
+    <!-- ================================= -->
+    <menuitem id="menu_facility_configuration"
+              name="Configuration"
+              parent="menu_facility_root"
+              sequence="999"
+              groups="rua_facility_base.group_facility_admin"/>
+
+    <!-- SLA Action -->
+    <record id="facility_sla_action" model="ir.actions.act_window">
+        <field name="name">Service Level Agreements</field>
+        <field name="res_model">facility.sla</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_facility_sla"
+              name="Service Level Agreements"
+              parent="menu_facility_configuration"
+              action="facility_sla_action"
+              sequence="10"/>
+
+    <menuitem id="menu_facility_settings"
+              name="General Settings"
+              parent="menu_facility_configuration"
+              action="facility_settings_action"
+              sequence="99"/>
+</odoo>

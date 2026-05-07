@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ============================================== -->
+        <!--   Campus                                        -->
+        <!-- ============================================== -->
+        <record id="campus_main" model="facility.campus">
+            <field name="name">Riyadh University of Arts - Main Campus</field>
+            <field name="code">RUA-MAIN</field>
+            <field name="city">Riyadh</field>
+            <field name="address">Al Malqa District, Northern Ring Road, Riyadh 13524</field>
+            <field name="manager_id" ref="rua_facility_base.user_facility_manager"/>
+        </record>
+
+        <!-- ============================================== -->
+        <!--   Buildings (7)                                 -->
+        <!-- ============================================== -->
+        <record id="bldg_visual_arts" model="facility.building">
+            <field name="name">Visual Arts College Building</field>
+            <field name="code">BLDG-VA</field>
+            <field name="campus_id" ref="campus_main"/>
+            <field name="building_type">academic</field>
+            <field name="operational_status">operational</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="bldg_theater" model="facility.building">
+            <field name="name">Theater and Performing Arts Building</field>
+            <field name="code">BLDG-TH</field>
+            <field name="campus_id" ref="campus_main"/>
+            <field name="building_type">academic</field>
+            <field name="operational_status">operational</field>
+            <field name="sequence">2</field>
+        </record>
+        <record id="bldg_studios" model="facility.building">
+            <field name="name">Studios and Production Building</field>
+            <field name="code">BLDG-ST</field>
+            <field name="campus_id" ref="campus_main"/>
+            <field name="building_type">academic</field>
+            <field name="operational_status">operational</field>
+            <field name="sequence">3</field>
+        </record>
+        <record id="bldg_admin" model="facility.building">
+            <field name="name">Administration and Student Services Building</field>
+            <field name="code">BLDG-AD</field>
+            <field name="campus_id" ref="campus_main"/>
+            <field name="building_type">administrative</field>
+            <field name="operational_status">operational</field>
+            <field name="sequence">4</field>
+        </record>
+        <record id="bldg_gallery" model="facility.building">
+            <field name="name">Art Gallery Center</field>
+            <field name="code">BLDG-GL</field>
+            <field name="campus_id" ref="campus_main"/>
+            <field name="building_type">academic</field>
+            <field name="operational_status">operational</field>
+            <field name="sequence">5</field>
+        </record>
+        <record id="bldg_main_theater" model="facility.building">
+            <field name="name">Main Theater</field>
+            <field name="code">BLDG-MT</field>
+            <field name="campus_id" ref="campus_main"/>
+            <field name="building_type">academic</field>
+            <field name="operational_status">operational</field>
+            <field name="sequence">6</field>
+        </record>
+        <record id="bldg_workshops" model="facility.building">
+            <field name="name">Arts Workshops Building</field>
+            <field name="code">BLDG-WK</field>
+            <field name="campus_id" ref="campus_main"/>
+            <field name="building_type">academic</field>
+            <field name="operational_status">operational</field>
+            <field name="sequence">7</field>
+        </record>
+
+        <!-- ============================================== -->
+        <!--   Floors (18)                                   -->
+        <!-- ============================================== -->
+        <!-- Visual Arts Building -->
+        <record id="floor_va_g" model="facility.floor">
+            <field name="name">Ground Floor</field><field name="code">VA-GF</field>
+            <field name="building_id" ref="bldg_visual_arts"/><field name="floor_number">0</field>
+        </record>
+        <record id="floor_va_1" model="facility.floor">
+            <field name="name">First Floor</field><field name="code">VA-1F</field>
+            <field name="building_id" ref="bldg_visual_arts"/><field name="floor_number">1</field>
+        </record>
+        <record id="floor_va_2" model="facility.floor">
+            <field name="name">Second Floor</field><field name="code">VA-2F</field>
+            <field name="building_id" ref="bldg_visual_arts"/><field name="floor_number">2</field>
+        </record>
+        <!-- Theater Building -->
+        <record id="floor_th_g" model="facility.floor">
+            <field name="name">Ground Floor</field><field name="code">TH-GF</field>
+            <field name="building_id" ref="bldg_theater"/><field name="floor_number">0</field>
+        </record>
+        <record id="floor_th_1" model="facility.floor">
+            <field name="name">First Floor</field><field name="code">TH-1F</field>
+            <field name="building_id" ref="bldg_theater"/><field name="floor_number">1</field>
+        </record>
+        <!-- Studios Building -->
+        <record id="floor_st_b" model="facility.floor">
+            <field name="name">Basement</field><field name="code">ST-B</field>
+            <field name="building_id" ref="bldg_studios"/><field name="floor_number">-1</field>
+        </record>
+        <record id="floor_st_g" model="facility.floor">
+            <field name="name">Ground Floor</field><field name="code">ST-GF</field>
+            <field name="building_id" ref="bldg_studios"/><field name="floor_number">0</field>
+        </record>
+        <record id="floor_st_1" model="facility.floor">
+            <field name="name">First Floor</field><field name="code">ST-1F</field>
+            <field name="building_id" ref="bldg_studios"/><field name="floor_number">1</field>
+        </record>
+        <!-- Admin Building -->
+        <record id="floor_ad_g" model="facility.floor">
+            <field name="name">Ground Floor</field><field name="code">AD-GF</field>
+            <field name="building_id" ref="bldg_admin"/><field name="floor_number">0</field>
+        </record>
+        <record id="floor_ad_1" model="facility.floor">
+            <field name="name">First Floor</field><field name="code">AD-1F</field>
+            <field name="building_id" ref="bldg_admin"/><field name="floor_number">1</field>
+        </record>
+        <record id="floor_ad_2" model="facility.floor">
+            <field name="name">Second Floor</field><field name="code">AD-2F</field>
+            <field name="building_id" ref="bldg_admin"/><field name="floor_number">2</field>
+        </record>
+        <!-- Gallery Center -->
+        <record id="floor_gl_g" model="facility.floor">
+            <field name="name">Ground Floor</field><field name="code">GL-GF</field>
+            <field name="building_id" ref="bldg_gallery"/><field name="floor_number">0</field>
+        </record>
+        <record id="floor_gl_1" model="facility.floor">
+            <field name="name">First Floor</field><field name="code">GL-1F</field>
+            <field name="building_id" ref="bldg_gallery"/><field name="floor_number">1</field>
+        </record>
+        <!-- Main Theater -->
+        <record id="floor_mt_g" model="facility.floor">
+            <field name="name">Ground Floor</field><field name="code">MT-GF</field>
+            <field name="building_id" ref="bldg_main_theater"/><field name="floor_number">0</field>
+        </record>
+        <record id="floor_mt_b" model="facility.floor">
+            <field name="name">Basement</field><field name="code">MT-B</field>
+            <field name="building_id" ref="bldg_main_theater"/><field name="floor_number">-1</field>
+        </record>
+        <!-- Workshops Building -->
+        <record id="floor_wk_g" model="facility.floor">
+            <field name="name">Ground Floor</field><field name="code">WK-GF</field>
+            <field name="building_id" ref="bldg_workshops"/><field name="floor_number">0</field>
+        </record>
+        <record id="floor_wk_1" model="facility.floor">
+            <field name="name">First Floor</field><field name="code">WK-1F</field>
+            <field name="building_id" ref="bldg_workshops"/><field name="floor_number">1</field>
+        </record>
+        <record id="floor_wk_b" model="facility.floor">
+            <field name="name">Basement</field><field name="code">WK-B</field>
+            <field name="building_id" ref="bldg_workshops"/><field name="floor_number">-1</field>
+        </record>
+
+        <!-- ============================================== -->
+        <!--   Spaces (45)                                   -->
+        <!-- ============================================== -->
+        <!-- Visual Arts Building spaces -->
+        <record id="space_lecture_a101" model="facility.space">
+            <field name="name">Lecture Hall A101</field><field name="code">VA-A101</field>
+            <field name="floor_id" ref="floor_va_g"/><field name="space_type">classroom</field>
+            <field name="capacity">80</field><field name="readiness_status">ready</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_drawing_b102" model="facility.space">
+            <field name="name">Drawing Studio B102</field><field name="code">VA-B102</field>
+            <field name="floor_id" ref="floor_va_g"/><field name="space_type">classroom</field>
+            <field name="capacity">30</field><field name="readiness_status">needs_maintenance</field>
+        </record>
+        <record id="space_painting_studio" model="facility.space">
+            <field name="name">Painting Studio</field><field name="code">VA-PS</field>
+            <field name="floor_id" ref="floor_va_1"/><field name="space_type">classroom</field>
+            <field name="capacity">25</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_digital_design_lab" model="facility.space">
+            <field name="name">Digital Design Lab</field><field name="code">VA-DDL</field>
+            <field name="floor_id" ref="floor_va_1"/><field name="space_type">design_lab</field>
+            <field name="capacity">24</field><field name="readiness_status">ready</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_printmaking_lab" model="facility.space">
+            <field name="name">Printmaking Lab</field><field name="code">VA-PL</field>
+            <field name="floor_id" ref="floor_va_2"/><field name="space_type">design_lab</field>
+            <field name="capacity">20</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_va_corridor" model="facility.space">
+            <field name="name">Main Corridor - Visual Arts</field><field name="code">VA-COR</field>
+            <field name="floor_id" ref="floor_va_g"/><field name="space_type">corridor</field>
+            <field name="readiness_status">ready</field>
+        </record>
+        <record id="space_va_storage" model="facility.space">
+            <field name="name">Equipment Storage Room</field><field name="code">VA-STR</field>
+            <field name="floor_id" ref="floor_va_g"/><field name="space_type">warehouse</field>
+            <field name="readiness_status">ready</field>
+        </record>
+
+        <!-- Theater Building spaces -->
+        <record id="space_experimental_theater" model="facility.space">
+            <field name="name">Experimental Theater</field><field name="code">TH-EXP</field>
+            <field name="floor_id" ref="floor_th_g"/><field name="space_type">theater</field>
+            <field name="capacity">120</field><field name="readiness_status">ready</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_costume_room" model="facility.space">
+            <field name="name">Costume Design Room</field><field name="code">TH-CDR</field>
+            <field name="floor_id" ref="floor_th_g"/><field name="space_type">office</field>
+            <field name="capacity">10</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_backstage" model="facility.space">
+            <field name="name">Backstage Area</field><field name="code">TH-BST</field>
+            <field name="floor_id" ref="floor_th_g"/><field name="space_type">service_area</field>
+            <field name="readiness_status">ready</field>
+        </record>
+        <record id="space_th_classroom" model="facility.space">
+            <field name="name">Theater Studies Classroom</field><field name="code">TH-CLS</field>
+            <field name="floor_id" ref="floor_th_1"/><field name="space_type">classroom</field>
+            <field name="capacity">35</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_rehearsal_room" model="facility.space">
+            <field name="name">Rehearsal Room</field><field name="code">TH-REH</field>
+            <field name="floor_id" ref="floor_th_1"/><field name="space_type">classroom</field>
+            <field name="capacity">30</field><field name="readiness_status">booked</field><field name="is_bookable">True</field>
+        </record>
+
+        <!-- Studios Building spaces -->
+        <record id="space_photo_studio_a" model="facility.space">
+            <field name="name">Photography Studio A</field><field name="code">ST-PSA</field>
+            <field name="floor_id" ref="floor_st_g"/><field name="space_type">photo_studio</field>
+            <field name="capacity">15</field><field name="readiness_status">ready</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_photo_studio_b" model="facility.space">
+            <field name="name">Photography Studio B</field><field name="code">ST-PSB</field>
+            <field name="floor_id" ref="floor_st_g"/><field name="space_type">photo_studio</field>
+            <field name="capacity">12</field><field name="readiness_status">needs_cleaning</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_audio_studio" model="facility.space">
+            <field name="name">Audio Recording Studio</field><field name="code">ST-ARS</field>
+            <field name="floor_id" ref="floor_st_b"/><field name="space_type">audio_studio</field>
+            <field name="capacity">8</field><field name="readiness_status">ready</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_video_edit_1" model="facility.space">
+            <field name="name">Video Editing Suite 1</field><field name="code">ST-VE1</field>
+            <field name="floor_id" ref="floor_st_1"/><field name="space_type">design_lab</field>
+            <field name="capacity">6</field><field name="readiness_status">ready</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_video_edit_2" model="facility.space">
+            <field name="name">Video Editing Suite 2</field><field name="code">ST-VE2</field>
+            <field name="floor_id" ref="floor_st_1"/><field name="space_type">design_lab</field>
+            <field name="capacity">6</field><field name="readiness_status">needs_maintenance</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_st_equipment" model="facility.space">
+            <field name="name">Studio Equipment Room</field><field name="code">ST-EQR</field>
+            <field name="floor_id" ref="floor_st_b"/><field name="space_type">equipment_room</field>
+            <field name="readiness_status">ready</field>
+        </record>
+
+        <!-- Admin Building spaces -->
+        <record id="space_student_services" model="facility.space">
+            <field name="name">Student Services Hall</field><field name="code">AD-SSH</field>
+            <field name="floor_id" ref="floor_ad_g"/><field name="space_type">office</field>
+            <field name="capacity">50</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_admin_offices" model="facility.space">
+            <field name="name">Administrative Offices</field><field name="code">AD-ADM</field>
+            <field name="floor_id" ref="floor_ad_1"/><field name="space_type">office</field>
+            <field name="capacity">20</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_faculty_meeting" model="facility.space">
+            <field name="name">Faculty Meeting Room</field><field name="code">AD-FMR</field>
+            <field name="floor_id" ref="floor_ad_1"/><field name="space_type">meeting_room</field>
+            <field name="capacity">16</field><field name="readiness_status">ready</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_cafeteria" model="facility.space">
+            <field name="name">Cafeteria</field><field name="code">AD-CAF</field>
+            <field name="floor_id" ref="floor_ad_g"/><field name="space_type">cafeteria</field>
+            <field name="capacity">200</field><field name="readiness_status">needs_cleaning</field>
+        </record>
+        <record id="space_ad_library" model="facility.space">
+            <field name="name">Arts Library</field><field name="code">AD-LIB</field>
+            <field name="floor_id" ref="floor_ad_2"/><field name="space_type">library</field>
+            <field name="capacity">60</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_ad_lecture_b201" model="facility.space">
+            <field name="name">Lecture Hall B201</field><field name="code">AD-B201</field>
+            <field name="floor_id" ref="floor_ad_2"/><field name="space_type">classroom</field>
+            <field name="capacity">60</field><field name="readiness_status">ready</field><field name="is_bookable">True</field>
+        </record>
+
+        <!-- Gallery Center spaces -->
+        <record id="space_main_gallery" model="facility.space">
+            <field name="name">Main Art Gallery</field><field name="code">GL-MAG</field>
+            <field name="floor_id" ref="floor_gl_g"/><field name="space_type">art_gallery</field>
+            <field name="capacity">150</field><field name="readiness_status">under_preparation</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_gallery_b" model="facility.space">
+            <field name="name">Gallery B - Student Works</field><field name="code">GL-STW</field>
+            <field name="floor_id" ref="floor_gl_g"/><field name="space_type">art_gallery</field>
+            <field name="capacity">80</field><field name="readiness_status">ready</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_exhibition_prep" model="facility.space">
+            <field name="name">Exhibition Preparation Room</field><field name="code">GL-EPR</field>
+            <field name="floor_id" ref="floor_gl_1"/><field name="space_type">warehouse</field>
+            <field name="capacity">20</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_gallery_corridor" model="facility.space">
+            <field name="name">Gallery Corridor</field><field name="code">GL-COR</field>
+            <field name="floor_id" ref="floor_gl_g"/><field name="space_type">corridor</field>
+            <field name="readiness_status">needs_cleaning</field>
+        </record>
+
+        <!-- Main Theater spaces -->
+        <record id="space_main_theater_hall" model="facility.space">
+            <field name="name">Main Theater Hall</field><field name="code">MT-MTH</field>
+            <field name="floor_id" ref="floor_mt_g"/><field name="space_type">theater</field>
+            <field name="capacity">500</field><field name="readiness_status">ready</field><field name="has_equipment">True</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_sound_control" model="facility.space">
+            <field name="name">Sound Control Room</field><field name="code">MT-SCR</field>
+            <field name="floor_id" ref="floor_mt_g"/><field name="space_type">equipment_room</field>
+            <field name="capacity">4</field><field name="readiness_status">ready</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_lighting_control" model="facility.space">
+            <field name="name">Lighting Control Room</field><field name="code">MT-LCR</field>
+            <field name="floor_id" ref="floor_mt_g"/><field name="space_type">equipment_room</field>
+            <field name="capacity">4</field><field name="readiness_status">ready</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_mt_backstage" model="facility.space">
+            <field name="name">Main Theater Backstage</field><field name="code">MT-BST</field>
+            <field name="floor_id" ref="floor_mt_g"/><field name="space_type">service_area</field>
+            <field name="readiness_status">needs_maintenance</field>
+        </record>
+        <record id="space_mt_equipment" model="facility.space">
+            <field name="name">Theater Equipment Storage</field><field name="code">MT-EQS</field>
+            <field name="floor_id" ref="floor_mt_b"/><field name="space_type">warehouse</field>
+            <field name="readiness_status">ready</field>
+        </record>
+        <record id="space_mt_dressing" model="facility.space">
+            <field name="name">Dressing Rooms</field><field name="code">MT-DRS</field>
+            <field name="floor_id" ref="floor_mt_b"/><field name="space_type">service_area</field>
+            <field name="capacity">12</field><field name="readiness_status">needs_cleaning</field>
+        </record>
+
+        <!-- Workshops Building spaces -->
+        <record id="space_sculpture_workshop" model="facility.space">
+            <field name="name">Sculpture Workshop</field><field name="code">WK-SCW</field>
+            <field name="floor_id" ref="floor_wk_g"/><field name="space_type">sculpture_workshop</field>
+            <field name="capacity">20</field><field name="readiness_status">needs_maintenance</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_ceramic_workshop" model="facility.space">
+            <field name="name">Ceramic Workshop</field><field name="code">WK-CRW</field>
+            <field name="floor_id" ref="floor_wk_g"/><field name="space_type">sculpture_workshop</field>
+            <field name="capacity">18</field><field name="readiness_status">ready</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_woodwork" model="facility.space">
+            <field name="name">Woodworking Workshop</field><field name="code">WK-WDW</field>
+            <field name="floor_id" ref="floor_wk_1"/><field name="space_type">sculpture_workshop</field>
+            <field name="capacity">16</field><field name="readiness_status">closed_for_safety</field><field name="has_equipment">True</field>
+        </record>
+        <record id="space_wk_storage" model="facility.space">
+            <field name="name">Workshop Materials Storage</field><field name="code">WK-WMS</field>
+            <field name="floor_id" ref="floor_wk_b"/><field name="space_type">warehouse</field>
+            <field name="readiness_status">ready</field>
+        </record>
+        <record id="space_wk_display" model="facility.space">
+            <field name="name">Workshop Display Area</field><field name="code">WK-DSP</field>
+            <field name="floor_id" ref="floor_wk_1"/><field name="space_type">art_gallery</field>
+            <field name="capacity">30</field><field name="readiness_status">under_preparation</field><field name="is_bookable">True</field>
+        </record>
+
+        <!-- Outdoor spaces (under admin building for structural link) -->
+        <record id="space_outdoor_performance" model="facility.space">
+            <field name="name">Outdoor Performance Yard</field><field name="code">OD-PFY</field>
+            <field name="floor_id" ref="floor_ad_g"/><field name="space_type">outdoor_area</field>
+            <field name="capacity">300</field><field name="readiness_status">ready</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_visitor_parking" model="facility.space">
+            <field name="name">Visitor Parking Area</field><field name="code">OD-VPA</field>
+            <field name="floor_id" ref="floor_ad_g"/><field name="space_type">parking</field>
+            <field name="capacity">100</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_calligraphy_room" model="facility.space">
+            <field name="name">Arabic Calligraphy Room</field><field name="code">VA-ACR</field>
+            <field name="floor_id" ref="floor_va_2"/><field name="space_type">classroom</field>
+            <field name="capacity">20</field><field name="readiness_status">ready</field>
+        </record>
+        <record id="space_under_prep_gallery" model="facility.space">
+            <field name="name">Temporary Exhibition Space</field><field name="code">GL-TMP</field>
+            <field name="floor_id" ref="floor_gl_1"/><field name="space_type">art_gallery</field>
+            <field name="capacity">60</field><field name="readiness_status">under_preparation</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_unavailable" model="facility.space">
+            <field name="name">Renovation Zone A</field><field name="code">WK-RZA</field>
+            <field name="floor_id" ref="floor_wk_b"/><field name="space_type">service_area</field>
+            <field name="readiness_status">unavailable</field>
+            <field name="operational_status">under_maintenance</field>
+        </record>
+        <record id="space_booked_2" model="facility.space">
+            <field name="name">VIP Reception Hall</field><field name="code">AD-VIP</field>
+            <field name="floor_id" ref="floor_ad_1"/><field name="space_type">meeting_room</field>
+            <field name="capacity">30</field><field name="readiness_status">booked</field><field name="is_bookable">True</field>
+        </record>
+        <record id="space_booked_3" model="facility.space">
+            <field name="name">Seminar Room C301</field><field name="code">AD-C301</field>
+            <field name="floor_id" ref="floor_ad_2"/><field name="space_type">meeting_room</field>
+            <field name="capacity">40</field><field name="readiness_status">booked</field><field name="is_bookable">True</field>
+        </record>
+
+    </data>
+</odoo>

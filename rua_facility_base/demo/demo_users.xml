@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ============================================== -->
+        <!--   Contractor / Vendor Partners                  -->
+        <!-- ============================================== -->
+        <record id="partner_contractor_afaq" model="res.partner">
+            <field name="name">Afaq HVAC Maintenance Co.</field>
+            <field name="company_type">company</field>
+            <field name="email">info@afaq-hvac.com.sa</field>
+            <field name="phone">+966 11 456 7890</field>
+            <field name="city">Riyadh</field>
+        </record>
+        <record id="partner_contractor_nokhba" model="res.partner">
+            <field name="name">Al Nokhba Elevators Co.</field>
+            <field name="company_type">company</field>
+            <field name="email">info@nokhba-elevators.com.sa</field>
+            <field name="phone">+966 11 234 5678</field>
+            <field name="city">Riyadh</field>
+        </record>
+        <record id="partner_contractor_masrahiyat" model="res.partner">
+            <field name="name">Masrahiyat Audio &amp; Lighting Co.</field>
+            <field name="company_type">company</field>
+            <field name="email">info@masrahiyat.com.sa</field>
+            <field name="phone">+966 11 345 6789</field>
+            <field name="city">Riyadh</field>
+        </record>
+        <record id="partner_contractor_ishraq" model="res.partner">
+            <field name="name">Ishraq Cleaning Services Co.</field>
+            <field name="company_type">company</field>
+            <field name="email">info@ishraq-cleaning.com.sa</field>
+            <field name="phone">+966 11 567 8901</field>
+            <field name="city">Riyadh</field>
+        </record>
+        <record id="partner_contractor_aman" model="res.partner">
+            <field name="name">Aman Safety &amp; Fire Systems Co.</field>
+            <field name="company_type">company</field>
+            <field name="email">info@aman-safety.com.sa</field>
+            <field name="phone">+966 11 678 9012</field>
+            <field name="city">Riyadh</field>
+        </record>
+        <record id="partner_contractor_adasa" model="res.partner">
+            <field name="name">Adasa Studio Equipment Co.</field>
+            <field name="company_type">company</field>
+            <field name="email">info@adasa-studios.com.sa</field>
+            <field name="phone">+966 11 789 0123</field>
+            <field name="city">Riyadh</field>
+        </record>
+        <record id="partner_contractor_madar" model="res.partner">
+            <field name="name">Madar Security &amp; Surveillance Co.</field>
+            <field name="company_type">company</field>
+            <field name="email">info@madar-security.com.sa</field>
+            <field name="phone">+966 11 890 1234</field>
+            <field name="city">Riyadh</field>
+        </record>
+        <record id="partner_contractor_gardens" model="res.partner">
+            <field name="name">Riyadh Gardens Landscaping Co.</field>
+            <field name="company_type">company</field>
+            <field name="email">info@riyadh-gardens.com.sa</field>
+            <field name="phone">+966 11 901 2345</field>
+            <field name="city">Riyadh</field>
+        </record>
+
+        <!-- ============================================== -->
+        <!--   Demo Users                                    -->
+        <!-- ============================================== -->
+
+        <!-- 1. Facility Manager -->
+        <record id="user_facility_manager" model="res.users">
+            <field name="name">Khalid Al-Rashidi</field>
+            <field name="login">manager.facility@rua.edu.sa</field>
+            <field name="email">manager.facility@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">facility_manager</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_manager')), (4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- 2. Maintenance Supervisor 1 -->
+        <record id="user_supervisor_1" model="res.users">
+            <field name="name">Fahad Al-Otaibi</field>
+            <field name="login">supervisor.maintenance1@rua.edu.sa</field>
+            <field name="email">supervisor.maintenance1@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">facility_supervisor</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_supervisor')), (4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- 3. Maintenance Supervisor 2 -->
+        <record id="user_supervisor_2" model="res.users">
+            <field name="name">Saad Al-Harbi</field>
+            <field name="login">supervisor.maintenance2@rua.edu.sa</field>
+            <field name="email">supervisor.maintenance2@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">facility_supervisor</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_supervisor')), (4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- 4. Electrical Technician -->
+        <record id="user_tech_electrical" model="res.users">
+            <field name="name">Ahmad Al-Zahrani</field>
+            <field name="login">technician.electrical@rua.edu.sa</field>
+            <field name="email">technician.electrical@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">technician</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_technician')), (4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- 5. HVAC Technician -->
+        <record id="user_tech_hvac" model="res.users">
+            <field name="name">Omar Al-Ghamdi</field>
+            <field name="login">technician.hvac@rua.edu.sa</field>
+            <field name="email">technician.hvac@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">technician</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_technician')), (4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- 6. Audio &amp; Lighting Technician -->
+        <record id="user_tech_audio" model="res.users">
+            <field name="name">Yousef Al-Shehri</field>
+            <field name="login">technician.audio.lighting@rua.edu.sa</field>
+            <field name="email">technician.audio.lighting@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">technician</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_technician')), (4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- 7. Cleaning &amp; Setup Technician -->
+        <record id="user_tech_cleaning" model="res.users">
+            <field name="name">Mohammed Al-Qahtani</field>
+            <field name="login">technician.cleaning@rua.edu.sa</field>
+            <field name="email">technician.cleaning@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">technician</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_technician')), (4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- 8. Contractor HVAC User -->
+        <record id="user_contractor_hvac" model="res.users">
+            <field name="name">Hassan - Afaq HVAC</field>
+            <field name="login">contractor.hvac@example.com</field>
+            <field name="email">contractor.hvac@example.com</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">contractor</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_contractor_user'))]"/>
+        </record>
+
+        <!-- 9. Contractor Theater Systems User -->
+        <record id="user_contractor_theater" model="res.users">
+            <field name="name">Nasser - Masrahiyat AV</field>
+            <field name="login">contractor.theater@example.com</field>
+            <field name="email">contractor.theater@example.com</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">contractor</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_contractor_user'))]"/>
+        </record>
+
+        <!-- 10. Faculty Member 1 -->
+        <record id="user_faculty_1" model="res.users">
+            <field name="name">Dr. Sara Al-Dosari</field>
+            <field name="login">faculty01@rua.edu.sa</field>
+            <field name="email">faculty01@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">faculty</field>
+            <field name="department_name">Visual Arts</field>
+            <field name="college_name">College of Visual Arts</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        </record>
+
+        <!-- 11. Faculty Member 2 -->
+        <record id="user_faculty_2" model="res.users">
+            <field name="name">Dr. Noura Al-Subaie</field>
+            <field name="login">faculty02@rua.edu.sa</field>
+            <field name="email">faculty02@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">faculty</field>
+            <field name="department_name">Theater Arts</field>
+            <field name="college_name">College of Performing Arts</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        </record>
+
+        <!-- 12. Faculty Member 3 -->
+        <record id="user_faculty_3" model="res.users">
+            <field name="name">Dr. Abdullah Al-Mutairi</field>
+            <field name="login">faculty03@rua.edu.sa</field>
+            <field name="email">faculty03@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">faculty</field>
+            <field name="department_name">Digital Design</field>
+            <field name="college_name">College of Visual Arts</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        </record>
+
+        <!-- 13-16. Students -->
+        <record id="user_student_1" model="res.users">
+            <field name="name">Lama Al-Johani</field>
+            <field name="login">student01@rua.edu.sa</field>
+            <field name="email">student01@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">student</field>
+            <field name="university_id">RUA-2024-0451</field>
+            <field name="college_name">College of Visual Arts</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        </record>
+        <record id="user_student_2" model="res.users">
+            <field name="name">Reem Al-Dossary</field>
+            <field name="login">student02@rua.edu.sa</field>
+            <field name="email">student02@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">student</field>
+            <field name="university_id">RUA-2024-0782</field>
+            <field name="college_name">College of Performing Arts</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        </record>
+        <record id="user_student_3" model="res.users">
+            <field name="name">Faisal Al-Tamimi</field>
+            <field name="login">student03@rua.edu.sa</field>
+            <field name="email">student03@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">student</field>
+            <field name="university_id">RUA-2023-1104</field>
+            <field name="college_name">College of Visual Arts</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        </record>
+        <record id="user_student_4" model="res.users">
+            <field name="name">Maha Al-Enazi</field>
+            <field name="login">student04@rua.edu.sa</field>
+            <field name="email">student04@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">student</field>
+            <field name="university_id">RUA-2025-0203</field>
+            <field name="college_name">College of Performing Arts</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        </record>
+
+        <!-- 17. Employee -->
+        <record id="user_employee_1" model="res.users">
+            <field name="name">Tariq Al-Malki</field>
+            <field name="login">employee01@rua.edu.sa</field>
+            <field name="email">employee01@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">employee</field>
+            <field name="department_name">Student Services</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_user'))]"/>
+        </record>
+
+        <!-- 18. University Management (Readonly) -->
+        <record id="user_management" model="res.users">
+            <field name="name">Prof. Ibrahim Al-Fayez</field>
+            <field name="login">management@rua.edu.sa</field>
+            <field name="email">management@rua.edu.sa</field>
+            <field name="password">Demo@12345</field>
+            <field name="facility_role">management</field>
+            <field name="group_ids" eval="[(4, ref('rua_facility_base.group_facility_management_readonly')), (4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- ============================================== -->
+        <!--   Extended SLA Rules                           -->
+        <!-- ============================================== -->
+        <record id="sla_cleaning" model="facility.sla">
+            <field name="name">Normal Cleaning Request</field>
+            <field name="request_type">cleaning_request</field>
+            <field name="response_time_hours">4</field>
+            <field name="resolution_time_hours">24</field>
+            <field name="sequence">15</field>
+            <field name="escalation_level_1_user_id" ref="user_supervisor_1"/>
+        </record>
+        <record id="sla_event" model="facility.sla">
+            <field name="name">Event Preparation Request</field>
+            <field name="request_type">event_preparation</field>
+            <field name="response_time_hours">8</field>
+            <field name="resolution_time_hours">72</field>
+            <field name="sequence">18</field>
+            <field name="escalation_level_1_user_id" ref="user_supervisor_2"/>
+        </record>
+        <record id="sla_observation" model="facility.sla">
+            <field name="name">Improvement Observation</field>
+            <field name="request_type">observation</field>
+            <field name="response_time_hours">24</field>
+            <field name="resolution_time_hours">72</field>
+            <field name="sequence">30</field>
+        </record>
+        <record id="sla_permit" model="facility.sla">
+            <field name="name">Permit Request</field>
+            <field name="request_type">permit_request</field>
+            <field name="response_time_hours">8</field>
+            <field name="resolution_time_hours">48</field>
+            <field name="sequence">25</field>
+        </record>
+
+    </data>
+</odoo>

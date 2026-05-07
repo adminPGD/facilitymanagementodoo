@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Extra asset categories -->
+        <record id="asset_cat_camera" model="facility.asset.category">
+            <field name="name">Photography Equipment</field><field name="icon">photo_camera</field>
+        </record>
+        <record id="asset_cat_surveillance" model="facility.asset.category">
+            <field name="name">Surveillance Systems</field><field name="icon">videocam</field>
+        </record>
+
+        <!-- ============================================== -->
+        <!--   Assets (30 core)                              -->
+        <!-- ============================================== -->
+
+        <!-- HVAC -->
+        <record id="asset_hvac_drawing" model="facility.asset">
+            <field name="name">HVAC Unit - Drawing Studio B102</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_hvac"/>
+            <field name="space_id" ref="space_drawing_b102"/>
+            <field name="manufacturer">Daikin</field><field name="model_name">VRV IV</field>
+            <field name="serial_number">RUA-HVAC-2024-001</field>
+            <field name="asset_status">needs_maintenance</field>
+            <field name="purchase_date">2024-03-15</field><field name="installation_date">2024-04-01</field>
+        </record>
+        <record id="asset_hvac_theater" model="facility.asset">
+            <field name="name">Central HVAC - Main Theater</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_hvac"/>
+            <field name="space_id" ref="space_main_theater_hall"/>
+            <field name="manufacturer">Carrier</field><field name="model_name">AquaEdge 19DV</field>
+            <field name="serial_number">RUA-HVAC-2023-002</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_hvac_admin" model="facility.asset">
+            <field name="name">HVAC Unit - Admin Building</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_hvac"/>
+            <field name="space_id" ref="space_admin_offices"/>
+            <field name="serial_number">RUA-HVAC-2024-003</field>
+            <field name="asset_status">working</field>
+        </record>
+
+        <!-- Electrical -->
+        <record id="asset_elec_panel_va" model="facility.asset">
+            <field name="name">Electrical Panel - Visual Arts Building</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_electrical"/>
+            <field name="space_id" ref="space_va_storage"/>
+            <field name="serial_number">RUA-ELEC-2023-001</field>
+            <field name="asset_status">working</field>
+        </record>
+
+        <!-- Elevator -->
+        <record id="asset_elevator_theater" model="facility.asset">
+            <field name="name">Main Theater Elevator</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_elevator"/>
+            <field name="space_id" ref="space_main_theater_hall"/>
+            <field name="manufacturer">Otis</field><field name="model_name">Gen3</field>
+            <field name="serial_number">RUA-ELEV-2023-001</field>
+            <field name="asset_status">working</field>
+            <field name="vendor_id" ref="rua_facility_base.partner_contractor_nokhba"/>
+        </record>
+
+        <!-- Audio Systems -->
+        <record id="asset_mic_wireless" model="facility.asset">
+            <field name="name">Wireless Microphone Set - Main Theater</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_audio"/>
+            <field name="space_id" ref="space_main_theater_hall"/>
+            <field name="manufacturer">Shure</field><field name="model_name">ULXD4Q</field>
+            <field name="serial_number">RUA-AUD-2024-001</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_speaker_linearray" model="facility.asset">
+            <field name="name">Line Array Speaker System - Main Theater</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_audio"/>
+            <field name="space_id" ref="space_main_theater_hall"/>
+            <field name="manufacturer">JBL Professional</field><field name="model_name">VTX V25-II</field>
+            <field name="serial_number">RUA-AUD-2024-002</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_audio_mixer" model="facility.asset">
+            <field name="name">Audio Mixer - Recording Studio</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_audio"/>
+            <field name="space_id" ref="space_audio_studio"/>
+            <field name="manufacturer">Yamaha</field><field name="model_name">DM7</field>
+            <field name="serial_number">RUA-AUD-2024-003</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_audio_exp_theater" model="facility.asset">
+            <field name="name">PA System - Experimental Theater</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_audio"/>
+            <field name="space_id" ref="space_experimental_theater"/>
+            <field name="serial_number">RUA-AUD-2024-004</field>
+            <field name="asset_status">needs_maintenance</field>
+        </record>
+
+        <!-- Theater Lighting -->
+        <record id="asset_lighting_console" model="facility.asset">
+            <field name="name">Stage Lighting Console</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_lighting_stage"/>
+            <field name="space_id" ref="space_lighting_control"/>
+            <field name="manufacturer">ETC</field><field name="model_name">Gio @5</field>
+            <field name="serial_number">RUA-LGT-2024-001</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_led_theater_01" model="facility.asset">
+            <field name="name">LED Theater Light Unit 01</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_lighting_stage"/>
+            <field name="space_id" ref="space_main_theater_hall"/>
+            <field name="serial_number">RUA-LGT-2024-002</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_gallery_track_lighting" model="facility.asset">
+            <field name="name">Gallery Track Lighting Set</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_lighting_stage"/>
+            <field name="space_id" ref="space_main_gallery"/>
+            <field name="serial_number">RUA-LGT-2024-003</field>
+            <field name="asset_status">needs_maintenance</field>
+        </record>
+        <record id="asset_stage_curtain_motor" model="facility.asset">
+            <field name="name">Stage Curtain Motor</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_lighting_stage"/>
+            <field name="space_id" ref="space_main_theater_hall"/>
+            <field name="serial_number">RUA-LGT-2024-004</field>
+            <field name="asset_status">under_maintenance</field>
+        </record>
+
+        <!-- Projection -->
+        <record id="asset_projector_a101" model="facility.asset">
+            <field name="name">Projector - Lecture Hall A101</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_projection"/>
+            <field name="space_id" ref="space_lecture_a101"/>
+            <field name="manufacturer">Epson</field><field name="model_name">EB-L730U</field>
+            <field name="serial_number">RUA-PROJ-2024-001</field>
+            <field name="asset_status">out_of_service</field>
+        </record>
+        <record id="asset_display_ddl" model="facility.asset">
+            <field name="name">Interactive Display - Digital Design Lab</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_projection"/>
+            <field name="space_id" ref="space_digital_design_lab"/>
+            <field name="manufacturer">Samsung</field><field name="model_name">Flip Pro 85</field>
+            <field name="serial_number">RUA-PROJ-2024-002</field>
+            <field name="asset_status">working</field>
+        </record>
+
+        <!-- Photography Equipment -->
+        <record id="asset_camera_cinema" model="facility.asset">
+            <field name="name">Canon Cinema Camera - Photography Studio A</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="asset_cat_camera"/>
+            <field name="space_id" ref="space_photo_studio_a"/>
+            <field name="manufacturer">Canon</field><field name="model_name">EOS C70</field>
+            <field name="serial_number">RUA-CAM-2025-001</field>
+            <field name="asset_status">working</field>
+            <field name="warranty_start_date">2025-01-15</field>
+            <field name="warranty_end_date">2027-01-15</field>
+        </record>
+        <record id="asset_camera_dslr" model="facility.asset">
+            <field name="name">DSLR Camera Set - Studio B</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="asset_cat_camera"/>
+            <field name="space_id" ref="space_photo_studio_b"/>
+            <field name="manufacturer">Nikon</field><field name="model_name">Z9</field>
+            <field name="serial_number">RUA-CAM-2025-002</field>
+            <field name="asset_status">under_warranty</field>
+            <field name="warranty_start_date">2025-02-01</field>
+            <field name="warranty_end_date">2027-02-01</field>
+        </record>
+
+        <!-- Computing -->
+        <record id="asset_workstation_01" model="facility.asset">
+            <field name="name">Video Editing Workstation 01</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_computing"/>
+            <field name="space_id" ref="space_video_edit_1"/>
+            <field name="manufacturer">Apple</field><field name="model_name">Mac Studio M4 Ultra</field>
+            <field name="serial_number">RUA-PC-2025-001</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_workstation_02" model="facility.asset">
+            <field name="name">Video Editing Workstation 02</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_computing"/>
+            <field name="space_id" ref="space_video_edit_2"/>
+            <field name="serial_number">RUA-PC-2025-002</field>
+            <field name="asset_status">under_maintenance</field>
+        </record>
+
+        <!-- Art Equipment -->
+        <record id="asset_drawing_tables" model="facility.asset">
+            <field name="name">Drawing Tables Set - Drawing Studio</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_art_equipment"/>
+            <field name="space_id" ref="space_drawing_b102"/>
+            <field name="serial_number">RUA-ART-2024-001</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_sculpture_tools" model="facility.asset">
+            <field name="name">Sculpture Cutting Tool Set</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_art_equipment"/>
+            <field name="space_id" ref="space_sculpture_workshop"/>
+            <field name="serial_number">RUA-ART-2024-002</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_ceramic_kiln" model="facility.asset">
+            <field name="name">Ceramic Kiln</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_art_equipment"/>
+            <field name="space_id" ref="space_ceramic_workshop"/>
+            <field name="serial_number">RUA-ART-2024-003</field>
+            <field name="asset_status">working</field>
+        </record>
+
+        <!-- Furniture -->
+        <record id="asset_chairs_theater" model="facility.asset">
+            <field name="name">Theater Seating Set (500 seats)</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_furniture"/>
+            <field name="space_id" ref="space_main_theater_hall"/>
+            <field name="serial_number">RUA-FUR-2023-001</field>
+            <field name="asset_status">working</field>
+        </record>
+
+        <!-- Safety -->
+        <record id="asset_fire_ext_corridor" model="facility.asset">
+            <field name="name">Fire Extinguisher - Studio Corridor</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_fire_safety"/>
+            <field name="space_id" ref="space_va_corridor"/>
+            <field name="serial_number">RUA-SAF-2024-001</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_emergency_sign" model="facility.asset">
+            <field name="name">Emergency Exit Sign - Main Theater</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_fire_safety"/>
+            <field name="space_id" ref="space_main_theater_hall"/>
+            <field name="serial_number">RUA-SAF-2024-002</field>
+            <field name="asset_status">working</field>
+        </record>
+
+        <!-- Surveillance -->
+        <record id="asset_cctv_entrance" model="facility.asset">
+            <field name="name">CCTV Camera - Main Entrance</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="asset_cat_surveillance"/>
+            <field name="space_id" ref="space_va_corridor"/>
+            <field name="serial_number">RUA-CAM-SEC-001</field>
+            <field name="asset_status">working</field>
+            <field name="vendor_id" ref="rua_facility_base.partner_contractor_madar"/>
+        </record>
+        <record id="asset_cctv_gallery" model="facility.asset">
+            <field name="name">CCTV Camera - Gallery Center</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="asset_cat_surveillance"/>
+            <field name="space_id" ref="space_main_gallery"/>
+            <field name="serial_number">RUA-CAM-SEC-002</field>
+            <field name="asset_status">under_warranty</field>
+            <field name="warranty_start_date">2025-03-01</field>
+            <field name="warranty_end_date">2027-03-01</field>
+        </record>
+
+        <!-- Water -->
+        <record id="asset_water_pump" model="facility.asset">
+            <field name="name">Water Pump - Outdoor Zone</field>
+            <field name="asset_type">operational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_plumbing"/>
+            <field name="space_id" ref="space_outdoor_performance"/>
+            <field name="serial_number">RUA-PLM-2024-001</field>
+            <field name="asset_status">working</field>
+        </record>
+        <record id="asset_woodwork_tools" model="facility.asset">
+            <field name="name">Woodworking Power Tools Set</field>
+            <field name="asset_type">educational</field>
+            <field name="asset_category_id" ref="rua_facility_campus.asset_cat_art_equipment"/>
+            <field name="space_id" ref="space_woodwork"/>
+            <field name="serial_number">RUA-ART-2024-004</field>
+            <field name="asset_status">out_of_service</field>
+        </record>
+
+    </data>
+</odoo>

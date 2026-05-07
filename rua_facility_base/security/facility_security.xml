@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================================= -->
+    <!--        Module Category            -->
+    <!-- ================================= -->
+    <record id="module_category_facility" model="ir.module.category">
+        <field name="name">Facility Management</field>
+        <field name="description">Riyadh University of Arts - Facility Management</field>
+        <field name="sequence">100</field>
+    </record>
+
+    <!-- ================================= -->
+    <!--        Privileges                 -->
+    <!-- ================================= -->
+
+    <!-- Facility Operations privilege (User → Technician → Supervisor → Manager → Admin) -->
+    <record id="privilege_facility_operations" model="res.groups.privilege">
+        <field name="name">Facility Operations</field>
+        <field name="category_id" ref="module_category_facility"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <!-- Contracts privilege -->
+    <record id="privilege_facility_contracts" model="res.groups.privilege">
+        <field name="name">Contracts</field>
+        <field name="category_id" ref="module_category_facility"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <!-- Safety privilege -->
+    <record id="privilege_facility_safety" model="res.groups.privilege">
+        <field name="name">Safety</field>
+        <field name="category_id" ref="module_category_facility"/>
+        <field name="sequence">30</field>
+    </record>
+
+    <!-- ================================= -->
+    <!--        Security Groups            -->
+    <!-- ================================= -->
+
+    <!-- 1. Base Facility User (portal) — not in privilege (portal users) -->
+    <record id="group_facility_user" model="res.groups">
+        <field name="name">Facility User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="comment">Portal users: students, faculty, employees. Can submit requests and view own records.</field>
+    </record>
+
+    <!-- 2. Technician — first level in operations privilege -->
+    <record id="group_facility_technician" model="res.groups">
+        <field name="name">Technician</field>
+        <field name="privilege_id" ref="privilege_facility_operations"/>
+        <field name="sequence">10</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Technicians: see assigned work orders, update status, add materials.</field>
+    </record>
+
+    <!-- 3. Supervisor -->
+    <record id="group_facility_supervisor" model="res.groups">
+        <field name="name">Facility Supervisor</field>
+        <field name="privilege_id" ref="privilege_facility_operations"/>
+        <field name="sequence">20</field>
+        <field name="implied_ids" eval="[(4, ref('group_facility_technician'))]"/>
+        <field name="comment">Supervisors: accept/reject requests, assign technicians, verify work orders.</field>
+    </record>
+
+    <!-- 4. Manager -->
+    <record id="group_facility_manager" model="res.groups">
+        <field name="name">Facility Manager</field>
+        <field name="privilege_id" ref="privilege_facility_operations"/>
+        <field name="sequence">30</field>
+        <field name="implied_ids" eval="[(4, ref('group_facility_supervisor'))]"/>
+        <field name="comment">Managers: full operational access, reports, dashboards.</field>
+    </record>
+
+    <!-- 5. Admin -->
+    <record id="group_facility_admin" model="res.groups">
+        <field name="name">Facility Admin</field>
+        <field name="privilege_id" ref="privilege_facility_operations"/>
+        <field name="sequence">40</field>
+        <field name="implied_ids" eval="[(4, ref('group_facility_manager'))]"/>
+        <field name="comment">Full admin: configuration, security, all modules.</field>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <!-- 6. Contract Manager — in contracts privilege -->
+    <record id="group_facility_contract_manager" model="res.groups">
+        <field name="name">Contract Manager</field>
+        <field name="privilege_id" ref="privilege_facility_contracts"/>
+        <field name="sequence">10</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- 7. Contractor User (portal) — not in privilege -->
+    <record id="group_facility_contractor_user" model="res.groups">
+        <field name="name">Contractor User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="comment">Contractors: see only work orders assigned to their company.</field>
+    </record>
+
+    <!-- 8. Safety Officer — in safety privilege -->
+    <record id="group_facility_safety_officer" model="res.groups">
+        <field name="name">Safety Officer</field>
+        <field name="privilege_id" ref="privilege_facility_safety"/>
+        <field name="sequence">10</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- 9. Management Readonly — standalone group -->
+    <record id="group_facility_management_readonly" model="res.groups">
+        <field name="name">University Management (Read Only)</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">University management: dashboards and reports only.</field>
+    </record>
+
+    <!-- 10. Inventory Officer — standalone -->
+    <record id="group_facility_inventory_officer" model="res.groups">
+        <field name="name">Inventory Officer</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- 11. Sustainability Officer — standalone -->
+    <record id="group_facility_sustainability_officer" model="res.groups">
+        <field name="name">Sustainability Officer</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>

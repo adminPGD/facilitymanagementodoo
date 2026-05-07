@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_facility_sla_admin,facility.sla.admin,model_facility_sla,rua_facility_base.group_facility_admin,1,1,1,1
+access_facility_sla_manager,facility.sla.manager,model_facility_sla,rua_facility_base.group_facility_manager,1,1,0,0
+access_facility_sla_supervisor,facility.sla.supervisor,model_facility_sla,rua_facility_base.group_facility_supervisor,1,0,0,0
+access_facility_sla_technician,facility.sla.technician,model_facility_sla,rua_facility_base.group_facility_technician,1,0,0,0
+access_facility_sla_user,facility.sla.user,model_facility_sla,rua_facility_base.group_facility_user,1,0,0,0

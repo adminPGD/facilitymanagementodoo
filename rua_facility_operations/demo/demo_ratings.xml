@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ============================================== -->
+        <!--   Service Ratings (20 ratings)                 -->
+        <!--   Linked to solved/closed requests             -->
+        <!-- ============================================== -->
+
+        <!-- Rating 1: Gallery lighting fix -->
+        <record id="rating_gallery_lighting" model="facility.rating">
+            <field name="request_id" ref="req_gallery_lighting"/>
+            <field name="rated_by" ref="rua_facility_base.user_employee_1"/>
+            <field name="response_speed">4</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Excellent work on the gallery lighting. The display areas look much better now. Quick response from the team.</field>
+        </record>
+
+        <!-- Rating 2: Stage curtain motor -->
+        <record id="rating_curtain_motor" model="facility.rating">
+            <field name="request_id" ref="req_curtain_motor"/>
+            <field name="rated_by" ref="rua_facility_base.user_tech_audio"/>
+            <field name="response_speed">3</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">4</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Motor replacement was done professionally. Curtain mechanism works perfectly now.</field>
+        </record>
+
+        <!-- Rating 3: Fire exit blocked -->
+        <record id="rating_safety_exit" model="facility.rating">
+            <field name="request_id" ref="req_safety_exit"/>
+            <field name="rated_by" ref="rua_facility_base.user_supervisor_2"/>
+            <field name="response_speed">5</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Immediate response to critical safety issue. Exit path cleared within 30 minutes. Excellent safety compliance.</field>
+        </record>
+
+        <!-- Rating 4: Cleaning workshop -->
+        <record id="rating_cleaning_workshop" model="facility.rating">
+            <field name="request_id" ref="req_cleaning_workshop"/>
+            <field name="rated_by" ref="rua_facility_base.user_faculty_1"/>
+            <field name="response_speed">4</field>
+            <field name="execution_quality">4</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Studio was cleaned thoroughly and ready for the next session on time. Thank you for the quick turnaround.</field>
+        </record>
+
+        <!-- Rating 5: Cleaning dressing rooms -->
+        <record id="rating_clean_dressing" model="facility.rating">
+            <field name="request_id" ref="req_clean_dressing"/>
+            <field name="rated_by" ref="rua_facility_base.user_faculty_2"/>
+            <field name="response_speed">3</field>
+            <field name="execution_quality">4</field>
+            <field name="team_behavior">4</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Good cleaning job overall. Mirrors are spotless. One suggestion: costume racks could be better organized by size.</field>
+        </record>
+
+        <!-- Rating 6: Low rating example -->
+        <record id="rating_low_example" model="facility.rating">
+            <field name="request_id" ref="req_gallery_lighting"/>
+            <field name="rated_by" ref="rua_facility_base.user_student_1"/>
+            <field name="response_speed">2</field>
+            <field name="execution_quality">3</field>
+            <field name="team_behavior">3</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Issue was resolved but took longer than expected. Some lights still flicker occasionally.</field>
+        </record>
+
+        <!-- Rating 7 -->
+        <record id="rating_7" model="facility.rating">
+            <field name="request_id" ref="req_curtain_motor"/>
+            <field name="rated_by" ref="rua_facility_base.user_faculty_2"/>
+            <field name="response_speed">4</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Professional work on the curtain motor. The theater is fully operational again for our performances.</field>
+        </record>
+
+        <!-- Rating 8 -->
+        <record id="rating_8" model="facility.rating">
+            <field name="request_id" ref="req_safety_exit"/>
+            <field name="rated_by" ref="rua_facility_base.user_facility_manager"/>
+            <field name="response_speed">5</field>
+            <field name="execution_quality">4</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Safety compliance team responded immediately. All emergency exits verified and properly marked.</field>
+        </record>
+
+        <!-- Rating 9 -->
+        <record id="rating_9" model="facility.rating">
+            <field name="request_id" ref="req_cleaning_workshop"/>
+            <field name="rated_by" ref="rua_facility_base.user_student_3"/>
+            <field name="response_speed">4</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">4</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">The workshop was spotless after the cleaning. Very happy with the result.</field>
+        </record>
+
+        <!-- Rating 10 -->
+        <record id="rating_10" model="facility.rating">
+            <field name="request_id" ref="req_clean_dressing"/>
+            <field name="rated_by" ref="rua_facility_base.user_student_4"/>
+            <field name="response_speed">3</field>
+            <field name="execution_quality">3</field>
+            <field name="team_behavior">4</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Dressing rooms are clean but some costume items were moved. Please coordinate with theater staff before reorganizing.</field>
+        </record>
+
+        <!-- Rating 11 -->
+        <record id="rating_11" model="facility.rating">
+            <field name="request_id" ref="req_gallery_lighting"/>
+            <field name="rated_by" ref="rua_facility_base.user_faculty_3"/>
+            <field name="response_speed">5</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Perfect lighting setup for the exhibition. The artwork looks stunning under the new lights.</field>
+        </record>
+
+        <!-- Rating 12 -->
+        <record id="rating_12" model="facility.rating">
+            <field name="request_id" ref="req_curtain_motor"/>
+            <field name="rated_by" ref="rua_facility_base.user_student_2"/>
+            <field name="response_speed">4</field>
+            <field name="execution_quality">4</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Curtain works smoothly now. The team was very friendly during the repair.</field>
+        </record>
+
+        <!-- Rating 13 -->
+        <record id="rating_13" model="facility.rating">
+            <field name="request_id" ref="req_safety_exit"/>
+            <field name="rated_by" ref="rua_facility_base.user_supervisor_1"/>
+            <field name="response_speed">5</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Critical safety issue handled with utmost urgency. Commendable response time and thorough resolution.</field>
+        </record>
+
+        <!-- Rating 14 -->
+        <record id="rating_14" model="facility.rating">
+            <field name="request_id" ref="req_cleaning_workshop"/>
+            <field name="rated_by" ref="rua_facility_base.user_tech_cleaning"/>
+            <field name="response_speed">3</field>
+            <field name="execution_quality">4</field>
+            <field name="team_behavior">4</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Workshop cleaning was adequate. All art supplies properly organized.</field>
+        </record>
+
+        <!-- Rating 15 - Reopen requested -->
+        <record id="rating_15" model="facility.rating">
+            <field name="request_id" ref="req_clean_dressing"/>
+            <field name="rated_by" ref="rua_facility_base.user_faculty_1"/>
+            <field name="response_speed">2</field>
+            <field name="execution_quality">2</field>
+            <field name="team_behavior">3</field>
+            <field name="issue_solved" eval="False"/>
+            <field name="reopen_requested" eval="True"/>
+            <field name="comment">Cleaning was incomplete. Makeup stains still visible on the countertops. Requesting another cleaning session.</field>
+        </record>
+
+        <!-- Rating 16 -->
+        <record id="rating_16" model="facility.rating">
+            <field name="request_id" ref="req_gallery_lighting"/>
+            <field name="rated_by" ref="rua_facility_base.user_tech_electrical"/>
+            <field name="response_speed">4</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">4</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Gallery lighting is now perfectly balanced for the artwork display. Great improvement.</field>
+        </record>
+
+        <!-- Rating 17 -->
+        <record id="rating_17" model="facility.rating">
+            <field name="request_id" ref="req_curtain_motor"/>
+            <field name="rated_by" ref="rua_facility_base.user_supervisor_1"/>
+            <field name="response_speed">4</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">4</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Motor replacement done efficiently. Theater ready for upcoming performances.</field>
+        </record>
+
+        <!-- Rating 18 -->
+        <record id="rating_18" model="facility.rating">
+            <field name="request_id" ref="req_safety_exit"/>
+            <field name="rated_by" ref="rua_facility_base.user_tech_hvac"/>
+            <field name="response_speed">5</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Emergency exit clearance was handled immediately. Safety protocols were followed precisely.</field>
+        </record>
+
+        <!-- Rating 19 -->
+        <record id="rating_19" model="facility.rating">
+            <field name="request_id" ref="req_cleaning_workshop"/>
+            <field name="rated_by" ref="rua_facility_base.user_student_2"/>
+            <field name="response_speed">5</field>
+            <field name="execution_quality">5</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Amazing cleaning job! The workshop looks brand new. Very satisfied.</field>
+        </record>
+
+        <!-- Rating 20 -->
+        <record id="rating_20" model="facility.rating">
+            <field name="request_id" ref="req_clean_dressing"/>
+            <field name="rated_by" ref="rua_facility_base.user_student_1"/>
+            <field name="response_speed">3</field>
+            <field name="execution_quality">4</field>
+            <field name="team_behavior">5</field>
+            <field name="issue_solved" eval="True"/>
+            <field name="comment">Dressing rooms are now clean and organized. Good job by the cleaning team.</field>
+        </record>
+
+    </data>
+</odoo>

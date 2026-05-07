@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Request categories and subcategories -->
+    <record id="request_cat_electrical" model="facility.request.category">
+        <field name="name">Electrical and Lighting</field><field name="icon">bolt</field>
+    </record>
+    <record id="request_cat_plumbing" model="facility.request.category">
+        <field name="name">Plumbing</field><field name="icon">water_drop</field>
+    </record>
+    <record id="request_cat_hvac" model="facility.request.category">
+        <field name="name">HVAC and Cooling</field><field name="icon">ac_unit</field>
+    </record>
+    <record id="request_cat_structural" model="facility.request.category">
+        <field name="name">Structural Works</field><field name="icon">foundation</field>
+    </record>
+    <record id="request_cat_carpentry" model="facility.request.category">
+        <field name="name">Carpentry and Furniture</field><field name="icon">chair</field>
+    </record>
+    <record id="request_cat_audio_visual" model="facility.request.category">
+        <field name="name">Audio Visual Systems</field><field name="icon">speaker</field>
+    </record>
+    <record id="request_cat_cleaning" model="facility.request.category">
+        <field name="name">Cleaning</field><field name="icon">cleaning_services</field>
+    </record>
+    <record id="request_cat_safety" model="facility.request.category">
+        <field name="name">Safety and Security</field><field name="icon">health_and_safety</field>
+    </record>
+    <record id="request_cat_it" model="facility.request.category">
+        <field name="name">Information Technology</field><field name="icon">computer</field>
+    </record>
+    <record id="request_cat_art_equipment" model="facility.request.category">
+        <field name="name">Arts Equipment</field><field name="icon">palette</field>
+    </record>
+</odoo>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="rua_facility_operations.FacilityDashboard">
+        <div class="o_facility_dashboard">
+
+            <!-- Loading Spinner -->
+            <div t-if="state.loading" class="fd-loading">
+                <div class="fd-spinner"/>
+                <span>Loading Dashboard...</span>
+            </div>
+
+            <div t-else="" class="fd-container">
+
+                <!-- ═══════ HERO HEADER ═══════ -->
+                <div class="fd-hero">
+                    <div class="fd-hero-content">
+                        <h1 class="fd-hero-title">Facility Management Dashboard</h1>
+                        <p class="fd-hero-sub">Real-time overview of all facility operations, requests, and work orders.</p>
+                    </div>
+                    <div class="fd-hero-shapes">
+                        <div class="fd-shape fd-shape-1"/>
+                        <div class="fd-shape fd-shape-2"/>
+                        <div class="fd-shape fd-shape-3"/>
+                    </div>
+                </div>
+
+                <!-- ═══════ KPI CARDS ═══════ -->
+                <div class="fd-kpi-grid">
+
+                    <div class="fd-kpi" t-on-click="() => this.openRequests()">
+                        <div class="fd-kpi-icon fd-icon-primary">
+                            <span class="fa fa-file-text-o"/>
+                        </div>
+                        <div class="fd-kpi-body">
+                            <span class="fd-kpi-value" t-esc="state.totalRequests"/>
+                            <span class="fd-kpi-label">Total Requests</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-kpi" t-on-click="() => this.openRequests('submitted')">
+                        <div class="fd-kpi-icon fd-icon-blue">
+                            <span class="fa fa-paper-plane"/>
+                        </div>
+                        <div class="fd-kpi-body">
+                            <span class="fd-kpi-value" t-esc="state.openRequests"/>
+                            <span class="fd-kpi-label">Open Requests</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-kpi" t-on-click="() => this.openRequests('in_progress')">
+                        <div class="fd-kpi-icon fd-icon-amber">
+                            <span class="fa fa-cogs"/>
+                        </div>
+                        <div class="fd-kpi-body">
+                            <span class="fd-kpi-value" t-esc="state.inProgressRequests"/>
+                            <span class="fd-kpi-label">In Progress</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-kpi fd-kpi-danger" t-on-click="() => this.openOverdue()">
+                        <div class="fd-kpi-icon fd-icon-red">
+                            <span class="fa fa-clock-o"/>
+                        </div>
+                        <div class="fd-kpi-body">
+                            <span class="fd-kpi-value" t-esc="state.overdueRequests"/>
+                            <span class="fd-kpi-label">Overdue</span>
+                        </div>
+                        <div t-if="state.overdueRequests > 0" class="fd-kpi-pulse"/>
+                    </div>
+
+                    <div class="fd-kpi" t-on-click="() => this.openRequests('solved')">
+                        <div class="fd-kpi-icon fd-icon-green">
+                            <span class="fa fa-check-circle"/>
+                        </div>
+                        <div class="fd-kpi-body">
+                            <span class="fd-kpi-value" t-esc="state.solvedRequests"/>
+                            <span class="fd-kpi-label">Solved</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-kpi" t-on-click="() => this.openWorkOrders()">
+                        <div class="fd-kpi-icon fd-icon-indigo">
+                            <span class="fa fa-wrench"/>
+                        </div>
+                        <div class="fd-kpi-body">
+                            <span class="fd-kpi-value" t-esc="state.totalWorkOrders"/>
+                            <span class="fd-kpi-label">Work Orders</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-kpi" t-on-click="() => this.openWorkOrders('in_progress')">
+                        <div class="fd-kpi-icon fd-icon-teal">
+                            <span class="fa fa-tasks"/>
+                        </div>
+                        <div class="fd-kpi-body">
+                            <span class="fd-kpi-value" t-esc="state.openWorkOrders"/>
+                            <span class="fd-kpi-label">Open WO</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-kpi">
+                        <div class="fd-kpi-icon fd-icon-gold">
+                            <span class="fa fa-star"/>
+                        </div>
+                        <div class="fd-kpi-body">
+                            <span class="fd-kpi-value" t-esc="state.avgRating"/>
+                            <span class="fd-kpi-label">Avg Rating</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ═══════ MIDDLE ROW: Completion + State + Priority ═══════ -->
+                <div class="fd-row-3">
+
+                    <!-- Completion Rate -->
+                    <div class="fd-card">
+                        <div class="fd-card-header">
+                            <h3><span class="fa fa-tachometer me-1"/> Completion Rate</h3>
+                        </div>
+                        <div class="fd-completion-wrap">
+                            <div class="fd-completion-ring">
+                                <svg viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="50" fill="none" stroke="#f0eded" stroke-width="12"/>
+                                    <circle cx="60" cy="60" r="50" fill="none" stroke="#064E3B" stroke-width="12"
+                                            t-att-stroke-dasharray="'' + (completionRate / 100 * 314) + ' 314'"
+                                            stroke-linecap="round" transform="rotate(-90 60 60)"
+                                            class="fd-ring-animated"/>
+                                </svg>
+                                <div class="fd-completion-text">
+                                    <span class="fd-completion-pct" t-esc="completionRate + '%'"/>
+                                    <span class="fd-completion-sub">Complete</span>
+                                </div>
+                            </div>
+                            <div class="fd-completion-stats">
+                                <div class="fd-mini-stat">
+                                    <span class="fd-mini-dot" style="background:#10B981"/>
+                                    <span>Solved: <b t-esc="state.solvedRequests"/></span>
+                                </div>
+                                <div class="fd-mini-stat">
+                                    <span class="fd-mini-dot" style="background:#6B7280"/>
+                                    <span>Closed: <b t-esc="state.closedRequests"/></span>
+                                </div>
+                                <div class="fd-mini-stat">
+                                    <span class="fd-mini-dot" style="background:#F59E0B"/>
+                                    <span>Open: <b t-esc="state.openRequests"/></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- State Distribution -->
+                    <div class="fd-card">
+                        <div class="fd-card-header">
+                            <h3><span class="fa fa-pie-chart me-1"/> Status Distribution</h3>
+                        </div>
+                        <div class="fd-state-bars">
+                            <t t-foreach="state.stateBreakdown" t-as="s" t-key="s.key">
+                                <div class="fd-hbar" t-on-click="() => this.openRequests(s.key)">
+                                    <div class="fd-hbar-head">
+                                        <span class="fd-hbar-label" t-esc="s.label"/>
+                                        <span class="fd-hbar-count" t-esc="s.count"/>
+                                    </div>
+                                    <div class="fd-hbar-track">
+                                        <div class="fd-hbar-fill"
+                                             t-att-style="'width:' + getStatePct(s.count) + '%;background:' + s.color"/>
+                                    </div>
+                                </div>
+                            </t>
+                            <div t-if="!state.stateBreakdown.length" class="fd-empty">No data available</div>
+                        </div>
+                    </div>
+
+                    <!-- Priority Distribution -->
+                    <div class="fd-card">
+                        <div class="fd-card-header">
+                            <h3><span class="fa fa-flag me-1"/> Priority Distribution</h3>
+                        </div>
+                        <div class="fd-priority-grid">
+                            <t t-foreach="state.priorityBreakdown" t-as="p" t-key="p.key">
+                                <div class="fd-priority-item">
+                                    <div class="fd-priority-ring" t-att-style="'border-color:' + p.color">
+                                        <span class="fd-priority-count" t-esc="p.count"/>
+                                    </div>
+                                    <span class="fd-priority-label" t-esc="p.label"/>
+                                </div>
+                            </t>
+                            <div t-if="!state.priorityBreakdown.length" class="fd-empty">No data</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ═══════ BOTTOM ROW: Types + Recent ═══════ -->
+                <div class="fd-row-2">
+
+                    <!-- Request Types -->
+                    <div class="fd-card">
+                        <div class="fd-card-header">
+                            <h3><span class="fa fa-th-large me-1"/> Request Types</h3>
+                        </div>
+                        <div class="fd-type-grid">
+                            <t t-foreach="state.typeBreakdown" t-as="tb" t-key="tb.key">
+                                <div class="fd-type-card" t-on-click="() => this.openRequestsByType(tb.key)">
+                                    <div class="fd-type-icon" t-att-style="'background:' + getTypeColor(tb.key)">
+                                        <span t-att-class="'fa fa-' + (tb.key === 'maintenance_report' ? 'wrench' : tb.key === 'observation' ? 'eye' : tb.key === 'service_request' ? 'cog' : tb.key === 'event_preparation' ? 'calendar' : tb.key === 'safety_report' ? 'shield' : 'trash')"/>
+                                    </div>
+                                    <div class="fd-type-body">
+                                        <span class="fd-type-count" t-esc="tb.count"/>
+                                        <span class="fd-type-label" t-esc="tb.label"/>
+                                    </div>
+                                    <div class="fd-type-bar">
+                                        <div class="fd-type-bar-fill" t-att-style="'width:' + getBarWidth(tb.count) + ';background:' + getTypeColor(tb.key)"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <!-- Recent Requests -->
+                    <div class="fd-card">
+                        <div class="fd-card-header">
+                            <h3><span class="fa fa-history me-1"/> Recent Requests</h3>
+                            <span class="fd-link" t-on-click="() => this.openRequests()">View All →</span>
+                        </div>
+                        <table class="fd-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="state.recentRequests" t-as="r" t-key="r.id">
+                                    <tr class="fd-table-row">
+                                        <td class="fd-text-primary fw-bold" t-esc="r.name"/>
+                                        <td>
+                                            <span class="fd-badge"
+                                                  t-att-style="'background:' + getTypeColor(r.request_type) + '18;color:' + getTypeColor(r.request_type)"
+                                                  t-esc="r.request_type"/>
+                                        </td>
+                                        <td>
+                                            <span class="fd-badge"
+                                                  t-att-style="'background:' + getStateColor(r.state) + '18;color:' + getStateColor(r.state)"
+                                                  t-esc="r.state"/>
+                                        </td>
+                                        <td>
+                                            <span class="fd-priority-dot" t-att-style="'background:' + getPriorityColor(r.priority)"/>
+                                        </td>
+                                        <td class="fd-text-muted" t-esc="formatDate(r.create_date)"/>
+                                    </tr>
+                                </t>
+                                <tr t-if="!state.recentRequests.length">
+                                    <td colspan="5" class="fd-empty">No requests yet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- ═══════ WORK ORDERS TABLE ═══════ -->
+                <div class="fd-card">
+                    <div class="fd-card-header">
+                        <h3><span class="fa fa-wrench me-1"/> Recent Work Orders</h3>
+                        <span class="fd-link" t-on-click="() => this.openWorkOrders()">View All →</span>
+                    </div>
+                    <table class="fd-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Assigned To</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="state.recentWorkOrders" t-as="wo" t-key="wo.id">
+                                <tr class="fd-table-row">
+                                    <td class="fd-text-primary fw-bold" t-esc="wo.name"/>
+                                    <td t-esc="wo.title"/>
+                                    <td t-esc="wo.assigned_user_id ? wo.assigned_user_id[1] : '—'"/>
+                                    <td>
+                                        <span class="fd-badge"
+                                              t-att-style="'background:' + getStateColor(wo.state) + '18;color:' + getStateColor(wo.state)"
+                                              t-esc="wo.state"/>
+                                    </td>
+                                    <td>
+                                        <span class="fd-priority-dot" t-att-style="'background:' + getPriorityColor(wo.priority)"/>
+                                    </td>
+                                    <td class="fd-text-muted" t-esc="formatDate(wo.create_date)"/>
+                                </tr>
+                            </t>
+                            <tr t-if="!state.recentWorkOrders.length">
+                                <td colspan="6" class="fd-empty">No work orders yet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+</templates>

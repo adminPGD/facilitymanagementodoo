@@ -1,0 +1,301 @@
+{
+  "info": {
+    "name": "RUA Facility Portal API",
+    "description": "REST API collection for Riyadh University of Arts Facility Management Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8089", "type": "string" },
+    { "key": "access_token", "value": "", "type": "string" },
+    { "key": "refresh_token", "value": "", "type": "string" },
+    { "key": "db", "value": "facility_rua", "type": "string" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{access_token}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.success && json.data) {",
+                  "  pm.collectionVariables.set('access_token', json.data.access_token);",
+                  "  pm.collectionVariables.set('refresh_token', json.data.refresh_token);",
+                  "  pm.test('Login successful', () => pm.expect(json.success).to.be.true);",
+                  "  pm.test('Has access token', () => pm.expect(json.data.access_token).to.be.a('string'));",
+                  "  pm.test('Has refresh token', () => pm.expect(json.data.refresh_token).to.be.a('string'));",
+                  "  pm.test('Has user role', () => pm.expect(json.data.user.role).to.be.a('string'));",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/auth/login",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"admin\",\n  \"password\": \"Demo@12345\",\n  \"db\": \"{{db}}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.success && json.data) {",
+                  "  pm.collectionVariables.set('access_token', json.data.access_token);",
+                  "  pm.collectionVariables.set('refresh_token', json.data.refresh_token);",
+                  "  pm.test('Token refreshed', () => pm.expect(json.success).to.be.true);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/auth/refresh",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Me",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/auth/me"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/auth/logout"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Campus",
+      "item": [
+        {
+          "name": "List Campuses",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/campus" }
+        },
+        {
+          "name": "List Buildings",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/buildings" }
+        },
+        {
+          "name": "List Floors",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/floors?building_id=1" }
+        },
+        {
+          "name": "List Spaces",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/spaces" }
+        },
+        {
+          "name": "Space Status",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/spaces/1/status" }
+        },
+        {
+          "name": "Request Categories",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/request-categories" }
+        }
+      ]
+    },
+    {
+      "name": "Requests",
+      "item": [
+        {
+          "name": "List My Requests",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/requests?page=1&limit=20" }
+        },
+        {
+          "name": "Get Request Detail",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/requests/1" }
+        },
+        {
+          "name": "Create Request",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/requests",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request_type\": \"maintenance_report\",\n  \"description\": \"HVAC not working in Drawing Studio B102\",\n  \"priority\": \"high\",\n  \"risk_level\": \"low\",\n  \"campus_id\": 1,\n  \"building_id\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Request",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/requests/1/update",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"priority\": \"urgent\",\n  \"description\": \"Updated description\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Add Comment",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/requests/1/comment",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"body\": \"Please prioritize this issue.\"\n}" }
+          }
+        },
+        {
+          "name": "Cancel Request",
+          "request": { "method": "POST", "url": "{{base_url}}/api/v1/requests/1/cancel" }
+        },
+        {
+          "name": "Reopen Request",
+          "request": { "method": "POST", "url": "{{base_url}}/api/v1/requests/1/reopen" }
+        },
+        {
+          "name": "Submit Rating",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/requests/1/rating",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"response_speed\": 4,\n  \"execution_quality\": 5,\n  \"team_behavior\": 5,\n  \"issue_solved\": true,\n  \"comment\": \"Great service!\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Upload Attachments",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/requests/1/attachments",
+            "body": {
+              "mode": "formdata",
+              "formdata": [{ "key": "files", "type": "file", "src": "" }]
+            }
+          }
+        },
+        {
+          "name": "User Dashboard",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/reports/dashboard" }
+        }
+      ]
+    },
+    {
+      "name": "Manager",
+      "item": [
+        {
+          "name": "Manager Dashboard",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/manager/dashboard" }
+        },
+        {
+          "name": "Manager All Requests",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/manager/requests?page=1&limit=20" }
+        },
+        {
+          "name": "Manager Request Detail",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/manager/requests/1" }
+        },
+        {
+          "name": "Manager All Work Orders",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/manager/work-orders?page=1&limit=20" }
+        },
+        {
+          "name": "Manager Work Order Detail",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/manager/work-orders/1" }
+        }
+      ]
+    },
+    {
+      "name": "Technician",
+      "item": [
+        {
+          "name": "Technician Dashboard",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/technician/dashboard" }
+        },
+        {
+          "name": "Technician Work Orders",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/technician/work-orders" }
+        },
+        {
+          "name": "Technician Work Order Detail",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/technician/work-orders/1" }
+        },
+        {
+          "name": "Technician Action",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/technician/work-orders/1/action",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"action\": \"accept\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contractor",
+      "item": [
+        {
+          "name": "Contractor Dashboard",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/contractor/dashboard" }
+        },
+        {
+          "name": "Contractor Work Orders",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/contractor/work-orders" }
+        },
+        {
+          "name": "Contractor Work Order Detail",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/contractor/work-orders/1" }
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "List Notifications",
+          "request": { "method": "GET", "url": "{{base_url}}/api/v1/notifications?page=1" }
+        },
+        {
+          "name": "Mark One Read",
+          "request": { "method": "POST", "url": "{{base_url}}/api/v1/notifications/1/read" }
+        },
+        {
+          "name": "Mark Batch Read",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/notifications/mark-read",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"ids\": [1, 2, 3]\n}" }
+          }
+        },
+        {
+          "name": "Mark All Read",
+          "request": { "method": "POST", "url": "{{base_url}}/api/v1/notifications/read-all" }
+        }
+      ]
+    }
+  ]
+}
