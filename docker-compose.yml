@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   fm-odoo-db:
     image: postgres:16
@@ -25,6 +24,7 @@ services:
     entrypoint: ["/bin/bash", "-c", "pip3 install PyJWT --break-system-packages -q && exec /entrypoint.sh odoo"]
     volumes:
       - fm_odoo_data:/var/lib/odoo
+      - /opt/ent-odoo/odoo-19.0+e.20260503/odoo:/usr/lib/python3/dist-packages/odoo
       - ./rua_facility_base:/mnt/extra-addons/rua_facility_base
       - ./rua_facility_campus:/mnt/extra-addons/rua_facility_campus
       - ./rua_facility_operations:/mnt/extra-addons/rua_facility_operations
